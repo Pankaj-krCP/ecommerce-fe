@@ -43,6 +43,10 @@ a {
   border-color: inherit;
 }
 
+.gap-5 {
+  gap: 5px;
+}
+
 .gap-10 {
   gap: 10px;
 }
@@ -341,4 +345,12 @@ footer .input-group-text {
 }
 /* Product cards end here */
 
+/* Special Product */
+
+.special-product-card {
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+/* Special Product ends here */
 /* Home Page Ends Here */

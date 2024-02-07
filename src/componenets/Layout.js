@@ -7,6 +7,9 @@ const Layout = () => {
   return (
     <>
       <Header />
+      <h3 style={{ color: "red", textAlign: "center" }}>
+        Page is Under Progress...
+      </h3>
       <Outlet />
       <Footer />
     </>
