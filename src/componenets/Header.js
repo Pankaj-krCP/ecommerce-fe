@@ -31,7 +31,7 @@ const Header = () => {
               </h2>
             </div>
             <div className="col-5">
-              <div class="input-group mb-0">
+              <div className="input-group mb-0">
                 <input
                   type="text"
                   className="form-control"
@@ -131,10 +131,10 @@ const Header = () => {
                 <div className="menu-links">
                   <div className="d-flex align-items-center gap-15">
                     <NavLink className="text-white" to="/">
-                      Our Store
-                    </NavLink>
-                    <NavLink className="text-white" to="/">
                       Home
+                    </NavLink>
+                    <NavLink className="text-white" to="/store">
+                      Our Store
                     </NavLink>
                     <NavLink className="text-white" to="/">
                       Blogs
