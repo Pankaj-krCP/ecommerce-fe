@@ -629,3 +629,10 @@ footer .input-group-text {
   color: white;
 }
 /* auth card ends here */
+
+/* Policy Pages */
+.policy {
+  background-color: white;
+  padding: 30px;
+}
+/* Policy Pages ends here */
