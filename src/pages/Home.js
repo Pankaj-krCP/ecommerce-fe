@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import BlogCard from "../componenets/BlogCard";
 import ProductCard from "../componenets/ProductCard";
 import SpecialProduct from "../componenets/SpecialProduct";
+import Meta from "../componenets/Meta";
 
 const Home = () => {
   return (
     <>
+      <Meta title={"Home"} />
       <section className="home-wrapper-1 py-5">
         <div className="container-xxl">
           <div className="row">
