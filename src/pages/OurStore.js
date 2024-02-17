@@ -237,7 +237,7 @@ function OurStore() {
                 </div>
               </div>
               <div className="product-list pb-5">
-                <div className="d-flex flex-wrap justify-content-between">
+                <div className="d-flex gap-10 flex-wrap">
                   <ProductCard grid={grid} />
                   <ProductCard grid={grid} />
                   <ProductCard grid={grid} />

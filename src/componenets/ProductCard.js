@@ -11,7 +11,7 @@ function ProductCard(props) {
         location.pathname == "/store" ? `gr-${12 / grid}` : "col-3"
       }`}
     >
-      <div className="product-card position-relative">
+      <Link to="/product/id" className="product-card position-relative">
         <div className="wishlist-icon position-absolute">
           <Link>
             <img src="images/wish.svg" alt="wishlist" />
@@ -62,7 +62,7 @@ function ProductCard(props) {
             </Link>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
