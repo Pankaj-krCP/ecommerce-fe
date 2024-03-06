@@ -1,10 +1,21 @@
 import Meta from "../componenets/Meta";
 import BreadCrumb from "../componenets/BreadCrumb";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Container from "../componenets/Container";
-import CustomInput from "../componenets/CustomInput";
+import { useSelector } from "react-redux";
+import LoginForm from "../componenets/LoginForm";
+import { useEffect } from "react";
 
 const Login = () => {
+  const authState = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authState.user !== null && authState.isError == false) {
+      navigate("/");
+    }
+  }, [authState]);
+
   return (
     <>
       <Meta title="login" />
@@ -14,23 +25,7 @@ const Login = () => {
           <div className="col-12">
             <div className="auth-card">
               <h3 className="text-center mb-3">Login</h3>
-              <form action="" className="d-flex flex-column gap-15">
-                <CustomInput type="email" name="email" placeholder="Email" />
-                <CustomInput
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                />
-                <Link to="/forgot-password" className="px-2">
-                  Forgot Password
-                </Link>
-                <div className="mt-3 d-flex justify-content-center gap-15 align-items-center">
-                  <button className="button border-0">Login</button>
-                  <Link to="/signup" className="button signup">
-                    SignUp
-                  </Link>
-                </div>
-              </form>
+              <LoginForm />
             </div>
           </div>
         </div>
