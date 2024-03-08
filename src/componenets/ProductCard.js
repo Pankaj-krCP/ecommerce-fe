@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToWishlist } from "../features/products/productSlice";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+import { getUserProductWishlist } from "../features/user/userSlice";
 
 function ProductCard(props) {
   const { grid, data } = props;
   let location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserProductWishlist());
+  }, []);
+
+  const addToWish = (prodId) => {
+    dispatch(addToWishlist(prodId));
+    setTimeout(() => {
+      dispatch(getUserProductWishlist());
+    }, 0);
+  };
+
+  const wishlistState = useSelector((state) => state?.auth?.wishlist?.wishlist);
+  const wishlistID = wishlistState?.map((item) => item._id);
 
   return (
     <>
@@ -26,7 +45,7 @@ function ProductCard(props) {
                   }
                   className="img-fluid"
                   alt="product-image"
-                  srcset=""
+                  srcSet=""
                 />
                 <img
                   src={
@@ -36,7 +55,7 @@ function ProductCard(props) {
                   }
                   className="img-fluid"
                   alt="product-image"
-                  srcset=""
+                  srcSet=""
                 />
               </div>
 
@@ -64,12 +83,21 @@ function ProductCard(props) {
                     __html: item?.description.substring(0, 200) + " ...",
                   }}
                 ></p>
-                <p className="price">$ {item?.price}</p>
+                <p className="price">Rs. {item?.price}</p>
               </div>
 
               <div className="wishlist-icon position-absolute">
-                <button className="border-0 bg-transparent">
-                  <img src="images/wish.svg" alt="wishlist" />
+                <button
+                  className="border-0 bg-transparent"
+                  onClick={() => {
+                    addToWish(item?._id);
+                  }}
+                >
+                  {wishlistID?.includes(item?._id) ? (
+                    <FaHeart className="fs-5 text-danger" />
+                  ) : (
+                    <FaRegHeart className="fs-5" />
+                  )}
                 </button>
               </div>
 
