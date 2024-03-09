@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addToWishlist } from "../features/products/productSlice";
+import { addToWishlist } from "../../features/products/productSlice";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { getUserProductWishlist } from "../features/user/userSlice";
+import { getUserProductWishlist } from "../../features/user/userSlice";
 
 function ProductCard(props) {
   const { grid, data } = props;
@@ -19,7 +19,7 @@ function ProductCard(props) {
     dispatch(addToWishlist(prodId));
     setTimeout(() => {
       dispatch(getUserProductWishlist());
-    }, 0);
+    }, 200);
   };
 
   const wishlistState = useSelector((state) => state?.auth?.wishlist?.wishlist);

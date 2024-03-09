@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBrands } from "../../features/brand/brandSlice";
-import { setBrandFilter } from "../../features/filterSlice";
+import { setBrandFilter } from "../../features/filter/filterSlice";
 
 const FilterByBrand = () => {
   const [brand, setBrand] = useState(null);

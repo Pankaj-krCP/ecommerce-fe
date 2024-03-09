@@ -1,6 +1,6 @@
 import React from "react";
-import Meta from "../componenets/Meta";
-import BreadCrumb from "../componenets/BreadCrumb";
+import Meta from "../componenets/common/Meta";
+import BreadCrumb from "../componenets/common/BreadCrumb";
 
 import WishlistContainer from "../componenets/wishlist/WishlistContainer";
 

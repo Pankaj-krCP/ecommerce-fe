@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import Meta from "../componenets/Meta";
-import BreadCrumb from "../componenets/BreadCrumb";
-import ProductCard from "../componenets/ProductCard";
+import Meta from "../componenets/common/Meta";
+import BreadCrumb from "../componenets/common/BreadCrumb";
+import ProductCard from "../componenets/other/ProductCard";
 import ReactStars from "react-rating-stars-component";
 import ReactImageZoom from "react-image-zoom";
-import Color from "../componenets/Color";
+import Color from "../componenets/other/Color";
 import { TbGitCompare } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
-import Container from "../componenets/Container";
+import Container from "../componenets/common/Container";
 
 const SingleProduct = () => {
   const props = {

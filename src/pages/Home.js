@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BlogCard from "../componenets/BlogCard";
-import ProductCard from "../componenets/ProductCard";
-import SpecialProduct from "../componenets/SpecialProduct";
-import Meta from "../componenets/Meta";
-import Container from "../componenets/Container";
+import BlogCard from "../componenets/other/BlogCard";
+import ProductCard from "../componenets/other/ProductCard";
+import SpecialProduct from "../componenets/other/SpecialProduct";
+import Meta from "../componenets/common/Meta";
+import Container from "../componenets/common/Container";
 import { services } from "../utils/Data";
 
 const Home = () => {

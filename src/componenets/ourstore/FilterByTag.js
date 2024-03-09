@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { tags } from "../../utils/constant";
-import { setTagFilter } from "../../features/filterSlice";
+import { setTagFilter } from "../../features/filter/filterSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const FilterByTag = () => {

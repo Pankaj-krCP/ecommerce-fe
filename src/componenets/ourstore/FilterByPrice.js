@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import {
   setMaxpriceFilter,
   setMinpriceFilter,
-} from "../../features/filterSlice";
+} from "../../features/filter/filterSlice";
 
 const FilterByPrice = () => {
   const [minPrice, setminPrice] = useState(null);

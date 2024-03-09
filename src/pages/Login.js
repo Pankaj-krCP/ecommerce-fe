@@ -1,9 +1,9 @@
-import Meta from "../componenets/Meta";
-import BreadCrumb from "../componenets/BreadCrumb";
+import Meta from "../componenets/common/Meta";
+import BreadCrumb from "../componenets/common/BreadCrumb";
 import { useNavigate } from "react-router-dom";
-import Container from "../componenets/Container";
+import Container from "../componenets/common/Container";
 import { useSelector } from "react-redux";
-import LoginForm from "../componenets/LoginForm";
+import LoginForm from "../componenets/auth/LoginForm";
 import { useEffect } from "react";
 
 const Login = () => {

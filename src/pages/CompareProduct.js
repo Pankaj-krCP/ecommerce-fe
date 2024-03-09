@@ -1,8 +1,8 @@
 import react from "react";
-import Meta from "../componenets/Meta";
-import BreadCrumb from "../componenets/BreadCrumb";
-import Color from "../componenets/Color";
-import Container from "../componenets/Container";
+import Meta from "../componenets/common/Meta";
+import BreadCrumb from "../componenets/common/BreadCrumb";
+import Color from "../componenets/other/Color";
+import Container from "../componenets/common/Container";
 
 function CompareProduct() {
   return (

@@ -1,5 +1,5 @@
-import BreadCrumb from "../componenets/BreadCrumb";
-import Meta from "../componenets/Meta";
+import BreadCrumb from "../componenets/common/BreadCrumb";
+import Meta from "../componenets/common/Meta";
 import StoreContainer from "../componenets/ourstore/StoreContainer";
 
 function OurStore() {

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Container from "../Container";
+import Container from "../common/Container";
 import ProductListDisplay from "./ProductListDisplay";
 import SortBy from "./SortBy";
 import SetGrid from "./SetGrid";
 import FilterList from "./FilterList";
-import { resetState } from "../../features/filterSlice";
+import { resetState } from "../../features/filter/filterSlice";
 import { useDispatch } from "react-redux";
 
 const StoreContainer = () => {

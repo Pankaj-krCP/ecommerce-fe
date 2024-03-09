@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCategories } from "../../features/pcategory/pcategorySlice";
-import { setCategoryFilter } from "../../features/filterSlice";
+import { setCategoryFilter } from "../../features/filter/filterSlice";
 
 const FilterByCategory = () => {
   const [category, setCategory] = useState(null);

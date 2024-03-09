@@ -1,8 +1,8 @@
 import React from "react";
-import BreadCrumb from "../componenets/BreadCrumb";
-import Meta from "../componenets/Meta";
-import BlogCard from "../componenets/BlogCard";
-import Container from "../componenets/Container";
+import BreadCrumb from "../componenets/common/BreadCrumb";
+import Meta from "../componenets/common/Meta";
+import BlogCard from "../componenets/other/BlogCard";
+import Container from "../componenets/common/Container";
 
 function Blog() {
   return (

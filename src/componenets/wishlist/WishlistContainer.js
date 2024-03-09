@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Container from "../Container";
+import Container from "../common/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { addToWishlist } from "../../features/products/productSlice";
 import { getUserProductWishlist } from "../../features/user/userSlice";
@@ -20,7 +20,7 @@ const WishlistContainer = () => {
     dispatch(addToWishlist(id));
     setTimeout(() => {
       dispatch(getUserProductWishlist());
-    }, 0);
+    }, 200);
   };
 
   return (

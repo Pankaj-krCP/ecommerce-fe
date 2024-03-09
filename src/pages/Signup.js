@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Meta from "../componenets/Meta";
-import BreadCrumb from "../componenets/BreadCrumb";
-import Container from "../componenets/Container";
-import SignUpForm from "../componenets/SignUpForm";
+import Meta from "../componenets/common/Meta";
+import BreadCrumb from "../componenets/common/BreadCrumb";
+import Container from "../componenets/common/Container";
+import SignUpForm from "../componenets/auth/SignUpForm";
 
 const Signup = () => {
   const navigate = useNavigate();
