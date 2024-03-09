@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { tags } from "../../utils/constant";
-import { setTagFilter } from "../../features/filter/filterSlice";
+import { setTagFilter } from "../../features/filter/productFilterSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const FilterByTag = () => {
@@ -11,7 +11,7 @@ const FilterByTag = () => {
     dispatch(setTagFilter(tag));
   }, [tag]);
 
-  const filter = useSelector((store) => store.filter);
+  const filter = useSelector((store) => store.productFilter);
 
   return (
     <>

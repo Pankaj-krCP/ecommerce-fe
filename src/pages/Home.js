@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BlogCard from "../componenets/other/BlogCard";
-import ProductCard from "../componenets/other/ProductCard";
+import BlogCard from "../componenets/blog/BlogCard";
+import ProductCard from "../componenets/ourstore/ProductCard";
 import SpecialProduct from "../componenets/other/SpecialProduct";
 import Meta from "../componenets/common/Meta";
 import Container from "../componenets/common/Container";

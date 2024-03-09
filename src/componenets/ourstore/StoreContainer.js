@@ -4,7 +4,7 @@ import ProductListDisplay from "./ProductListDisplay";
 import SortBy from "./SortBy";
 import SetGrid from "./SetGrid";
 import FilterList from "./FilterList";
-import { resetState } from "../../features/filter/filterSlice";
+import { resetState } from "../../features/filter/productFilterSlice";
 import { useDispatch } from "react-redux";
 
 const StoreContainer = () => {

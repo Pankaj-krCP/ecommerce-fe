@@ -3,7 +3,10 @@ import authReducer from "../features/user/userSlice";
 import productReducer from "../features/products/productSlice";
 import brandReducer from "../features/brand/brandSlice";
 import pcategoryReducer from "../features/pcategory/pcategorySlice";
-import filterReducer from "../features/filter/filterSlice";
+import bcategoryReducer from "../features/bcategory/bcategorySlice";
+import productFilterReducer from "../features/filter/productFilterSlice";
+import blogFilterReducer from "../features/filter/blogFilterSlice";
+import blogReducer from "../features/blogs/blogSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +14,9 @@ export const store = configureStore({
     product: productReducer,
     brand: brandReducer,
     pcategory: pcategoryReducer,
-    filter: filterReducer,
+    bcategory: bcategoryReducer,
+    productFilter: productFilterReducer,
+    blogFilter: blogFilterReducer,
+    blog: blogReducer,
   },
 });

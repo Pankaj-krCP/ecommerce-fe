@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ProductCard from "../other/ProductCard";
+import ProductCard from "./ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../features/products/productSlice";
 
@@ -7,7 +7,7 @@ const ProductListDisplay = ({ grid }) => {
   const dispatch = useDispatch();
 
   const productState = useSelector((state) => state?.product?.product);
-  const filterState = useSelector((state) => state.filter);
+  const filterState = useSelector((state) => state.productFilter);
 
   useEffect(() => {
     const { sort, tag, brand, category, minPrice, maxPrice } = filterState;

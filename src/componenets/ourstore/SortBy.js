@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { setSortFilter } from "../../features/filter/filterSlice";
+import { setSortFilter } from "../../features/filter/productFilterSlice";
 
 const SortBy = () => {
   const [sort, SetSort] = useState(null);

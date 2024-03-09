@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Meta from "../componenets/common/Meta";
 import BreadCrumb from "../componenets/common/BreadCrumb";
-import ProductCard from "../componenets/other/ProductCard";
+import ProductCard from "../componenets/ourstore/ProductCard";
 import ReactStars from "react-rating-stars-component";
 import ReactImageZoom from "react-image-zoom";
 import Color from "../componenets/other/Color";

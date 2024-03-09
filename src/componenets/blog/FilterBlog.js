@@ -1,41 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBrands } from "../../features/brand/brandSlice";
-import { setBrandFilter } from "../../features/filter/productFilterSlice";
+import { getAllCategories } from "../../features/bcategory/bcategorySlice";
+import { setCategoryFilter } from "../../features/filter/blogFilterSlice";
 
-const FilterByBrand = () => {
-  const [brand, setBrand] = useState(null);
+const FilterBlog = () => {
+  const [category, setCategory] = useState(null);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllBrands());
+    dispatch(getAllCategories());
   }, []);
 
   useEffect(() => {
-    dispatch(setBrandFilter(brand));
-  }, [brand]);
+    dispatch(setCategoryFilter(category));
+  }, [category]);
 
-  const brandState = useSelector((store) => store.brand.brand);
-  const filter = useSelector((store) => store.productFilter);
+  const catState = useSelector((store) => store.bcategory.category);
+  const filter = useSelector((store) => store.blogFilter);
 
   return (
-    <>
-      <h3 className="filter-title">Product Brands</h3>
+    <div className="filter-card mb-3">
+      <h3 className="filter-title">Find By Categories</h3>
       <div>
         <div className="product-tags d-flex flex-wrap align-items-center gap-10">
-          {brandState &&
-            brandState.map((item, index) => {
+          {catState &&
+            catState.map((item, index) => {
               return (
                 <span
                   className={`badge text-secondary rounded-3 py-2 px-3 ${
-                    item.title === filter.brand
+                    item.title === filter.category
                       ? "bg-success text-white"
                       : "bg-light"
                   }`}
                   style={{ cursor: "pointer" }}
                   key={index}
                   onClick={() =>
-                    setBrand(item.title === brand ? null : item.title)
+                    setCategory(item.title === category ? null : item.title)
                   }
                 >
                   {item.title}
@@ -44,8 +44,8 @@ const FilterByBrand = () => {
             })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default FilterByBrand;
+export default FilterBlog;
