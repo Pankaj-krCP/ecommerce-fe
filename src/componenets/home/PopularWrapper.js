@@ -1,9 +1,14 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Container from "../common/Container";
 import ProductCard from "../ourstore/ProductCard";
+import { getAllProducts } from "../../features/products/productSlice";
 
 const PopularWrapper = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllProducts());
+  }, []);
   const productState = useSelector((state) => state?.product?.product);
   const popularProduct = productState
     ? productState.filter((item) => item.tags === "Popular")

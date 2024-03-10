@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import { IoIosGitCompare } from "react-icons/io";
+import { CiHeart, CiUser, CiShoppingCart } from "react-icons/ci";
 
 const Header = () => {
   return (
@@ -9,13 +11,13 @@ const Header = () => {
         <div className="container-xxl">
           <div className="row">
             <div className="col-6">
-              <p className="text-white mb-0">Free Shipping over $100</p>
+              <p className="text-white mb-0">Free Shipping over Rs. 500</p>
             </div>
             <div className="col-6">
               <p className="text-end text-white mb-0">
                 Hotline:{" "}
                 <a className="text-white" href="tel: +91 8102090648">
-                  +91 810209648
+                  +91-810209648
                 </a>
               </p>
             </div>
@@ -53,7 +55,7 @@ const Header = () => {
                     to="/compare-product"
                     className="d-flex align-items-center gap-10 text-white"
                   >
-                    <img src="images/compare.svg" alt="compare" />
+                    <IoIosGitCompare className="fs-2" />
                     <p className="mb-0">
                       Compare <br /> Products
                     </p>
@@ -64,7 +66,7 @@ const Header = () => {
                     to="/wishlist"
                     className="d-flex align-items-center gap-10 text-white"
                   >
-                    <img src="images/wishlist.svg" alt="wishlist" />
+                    <CiHeart className="fs-2" />
                     <p className="mb-0">
                       Favourite <br /> wishlist
                     </p>
@@ -75,7 +77,7 @@ const Header = () => {
                     to="/login"
                     className="d-flex align-items-center gap-10 text-white"
                   >
-                    <img src="images/user.svg" alt="user" />
+                    <CiUser className="fs-2" />
                     <p className="mb-0">
                       Log in <br /> My Account
                     </p>
@@ -86,10 +88,10 @@ const Header = () => {
                     to="/cart"
                     className="d-flex align-items-center gap-10 text-white"
                   >
-                    <img src="images/cart.svg" alt="cart" />
+                    <CiShoppingCart className="fs-1 text-success" />
                     <div className="d-flex flex-column">
                       <span className="badge bg-white text-dark">0</span>
-                      <p className="mb-0">$ 500</p>
+                      <p className="mb-0">Rs. 500</p>
                     </div>
                   </Link>
                 </div>

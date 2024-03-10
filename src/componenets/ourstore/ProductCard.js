@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToWishlist } from "../../features/products/productSlice";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { getUserProductWishlist } from "../../features/user/userSlice";
+import { IoEyeOutline } from "react-icons/io5";
 
 function ProductCard(props) {
   const { grid, data } = props;
@@ -127,7 +128,8 @@ function ProductCard(props) {
                     to={"/product/" + item?._id}
                     className="border-0 bg-transparent"
                   >
-                    <img src="images/view.svg" alt="view" />
+                    <IoEyeOutline className="fs-5 text-black" />
+                    {/* <img src="images/view.svg" alt="view" /> */}
                   </Link>
                 </div>
 
