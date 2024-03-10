@@ -8,19 +8,18 @@ import { getUserProductWishlist } from "../../features/user/userSlice";
 import { IoEyeOutline } from "react-icons/io5";
 
 function ProductCard(props) {
-  const { grid, data } = props;
+  const { data, grid } = props;
   let location = useLocation();
   const dispatch = useDispatch();
 
+  const addToWishResult = useSelector((state) => state?.product);
+
   useEffect(() => {
     dispatch(getUserProductWishlist());
-  }, []);
+  }, [addToWishResult.addToWishlist]);
 
   const addToWish = (prodId) => {
     dispatch(addToWishlist(prodId));
-    setTimeout(() => {
-      dispatch(getUserProductWishlist());
-    }, 200);
   };
 
   const wishlistState = useSelector((state) => state?.auth?.wishlist?.wishlist);
@@ -37,8 +36,8 @@ function ProductCard(props) {
             } `}
           >
             <div className="product-card position-relative mt-2">
-              <Link to={`/product/` + item?._id}>
-                <div className="product-image">
+              <div className="product-image">
+                <Link to={`/product/${item._id}`}>
                   <img
                     src={
                       item?.images[0]?.url
@@ -59,49 +58,47 @@ function ProductCard(props) {
                     alt="product-image"
                     srcSet=""
                   />
-                </div>
+                </Link>
+              </div>
 
-                <div className="product-details">
-                  <h6 className="brand">{item?.brand}</h6>
-                  <h5 className="product-title">
-                    {grid != 1
-                      ? `${
-                          item?.title.length > 30
-                            ? item?.title.substring(0, 30) + " ..."
-                            : item?.title.substring(0, 30)
-                        }`
-                      : `${
-                          item?.title.length > 75
-                            ? item?.title.substring(0, 75) + " ..."
-                            : item?.title.substring(0, 75)
-                        }`}
-                  </h5>
-                  <ReactStars
-                    edit={false}
-                    count={5}
-                    value={parseFloat(item?.totalrating)}
-                    size={24}
-                    isHalf={true}
-                    emptyIcon={<i className="far fa-star"></i>}
-                    halfIcon={<i className="fa fa-star-half-alt"></i>}
-                    fullIcon={<i className="fa fa-star"></i>}
-                    activeColor="#ffd700"
-                  />
-                  <p
-                    className={`description ${
-                      grid === 1 ? "d-block" : "d-none"
-                    }`}
-                    dangerouslySetInnerHTML={{
-                      __html: `${
-                        item?.description.length > 200
-                          ? item?.description.substring(0, 200) + " ..."
-                          : item?.description.substring(0, 200)
-                      }`,
-                    }}
-                  ></p>
-                  <p className="price">Rs. {item?.price}</p>
-                </div>
-              </Link>
+              <div className="product-details">
+                <h6 className="brand">{item?.brand}</h6>
+                <h5 className="product-title">
+                  {grid != 1
+                    ? `${
+                        item?.title.length > 30
+                          ? item?.title.substring(0, 30) + " ..."
+                          : item?.title.substring(0, 30)
+                      }`
+                    : `${
+                        item?.title.length > 75
+                          ? item?.title.substring(0, 75) + " ..."
+                          : item?.title.substring(0, 75)
+                      }`}
+                </h5>
+                <ReactStars
+                  edit={false}
+                  count={5}
+                  value={parseFloat(item?.totalrating)}
+                  size={24}
+                  isHalf={true}
+                  emptyIcon={<i className="far fa-star"></i>}
+                  halfIcon={<i className="fa fa-star-half-alt"></i>}
+                  fullIcon={<i className="fa fa-star"></i>}
+                  activeColor="#ffd700"
+                />
+                <p
+                  className={`description ${grid === 1 ? "d-block" : "d-none"}`}
+                  dangerouslySetInnerHTML={{
+                    __html: `${
+                      item?.description.length > 200
+                        ? item?.description.substring(0, 200) + " ..."
+                        : item?.description.substring(0, 200)
+                    }`,
+                  }}
+                ></p>
+                <p className="price">Rs. {item?.price}</p>
+              </div>
 
               <div className="wishlist-icon position-absolute">
                 <button

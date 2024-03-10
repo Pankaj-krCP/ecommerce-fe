@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { productService } from "./productService";
 
@@ -45,6 +45,8 @@ export const addRating = createAsyncThunk(
     }
   }
 );
+
+export const resetMsgState = createAction("reset_msg");
 
 const productState = {
   product: "",
@@ -128,6 +130,11 @@ export const productSlice = createSlice({
         if (state.isError) {
           toast.error("Something Error");
         }
+      })
+      .addCase(resetMsgState, (state) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = false;
       });
   },
 });
