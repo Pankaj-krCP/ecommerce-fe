@@ -5,18 +5,23 @@ import SortBy from "./SortBy";
 import SetGrid from "./SetGrid";
 import FilterList from "./FilterList";
 import { resetState } from "../../features/filter/productFilterSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const StoreContainer = () => {
   const [grid, setGrid] = useState(4);
   const dispatch = useDispatch();
+  const filterState = useSelector((state) => state.productFilter);
+  const { sort, tag, brand, category, minPrice, maxPrice } = filterState;
+  const clear = sort || tag || brand || category || minPrice || maxPrice;
 
   return (
     <Container class1="store-wrapper home-wrapper-2 py-5">
       <div className="row">
         <div className="col-3">
           <span
-            className={`badge text-secondary rounded-3 py-2 px-3 mb-2 bg-white`}
+            className={`badge rounded-3 py-2 px-3 mb-2 ${
+              clear ? "bg-success text-white" : "bg-white text-secondary"
+            }`}
             style={{ cursor: "pointer" }}
             onClick={() => dispatch(resetState())}
           >

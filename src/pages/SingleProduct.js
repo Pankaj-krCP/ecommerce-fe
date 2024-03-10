@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Meta from "../componenets/common/Meta";
 import BreadCrumb from "../componenets/common/BreadCrumb";
-import ProductCard from "../componenets/ourstore/ProductCard";
 import ReactStars from "react-rating-stars-component";
 import ReactImageZoom from "react-image-zoom";
 import Color from "../componenets/other/Color";
 import { TbGitCompare } from "react-icons/tb";
 import { AiOutlineHeart } from "react-icons/ai";
+import { HiOutlineArrowLeft } from "react-icons/hi";
 import Container from "../componenets/common/Container";
+import PopularWrapper from "../componenets/home/PopularWrapper";
+import { useNavigate } from "react-router-dom";
 
 const SingleProduct = () => {
   const props = {
@@ -25,10 +27,22 @@ const SingleProduct = () => {
     document.execCommand("copy");
     textField.remove();
   };
+
+  const navigate = useNavigate();
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <Meta title={"Product Name"} />
       <BreadCrumb title="Product Name" />
+      <button
+        className="d-flex align-items-center border-0 mb-3 mx-5 bg-transparent gap-10"
+        onClick={goBack}
+      >
+        <HiOutlineArrowLeft className="fs-4" /> Go Back
+      </button>
       <Container class1="main-product-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-6">
@@ -292,19 +306,7 @@ const SingleProduct = () => {
           </div>
         </div>
       </Container>
-      <Container class1="popualr-wrapper py-5 home-wrapper-2">
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Our Popualr Products</h3>
-          </div>
-        </div>
-        <div className="row">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-        </div>
-      </Container>
+      <PopularWrapper />
     </>
   );
 };

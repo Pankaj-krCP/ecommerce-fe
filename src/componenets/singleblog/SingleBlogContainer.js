@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { HiOutlineArrowLeft } from "react-icons/hi";
 import Container from "../common/Container";
@@ -8,6 +8,7 @@ import { getABlog } from "../../features/blogs/blogSlice";
 const SingleBlogContainer = () => {
   const blogState = useSelector((state) => state?.blog?.singleBlog);
   const location = useLocation();
+  const navigate = useNavigate();
   const getBlogId = location.pathname.split("/")[2];
   const dispatch = useDispatch();
   useEffect(() => {
@@ -16,15 +17,20 @@ const SingleBlogContainer = () => {
   const getBlog = () => {
     dispatch(getABlog(getBlogId));
   };
+  const goBack = () => {
+    navigate(-1);
+  };
   return (
     <Container class1="blog-wrapper home-wrapper-2 py-5">
       <div className="row">
         <div className="col-12">
           <div className="single-blog-card">
-            <Link to="/blog" className="d-flex align-items-center gap-10">
-              <HiOutlineArrowLeft className="fs-4" />
-              Go Back to Blogs
-            </Link>
+            <button
+              className="d-flex align-items-center border-0 mb-3 bg-transparent gap-10"
+              onClick={goBack}
+            >
+              <HiOutlineArrowLeft className="fs-4" /> Go Back
+            </button>
             <h3 className="title">{blogState?.title}</h3>
             <img
               src={

@@ -36,55 +36,71 @@ function ProductCard(props) {
             } `}
           >
             <div className="product-card position-relative mt-2">
-              <div className="product-image">
-                <img
-                  src={
-                    item?.images[0]?.url
-                      ? item.images[0].url
-                      : "images/watch.jpg"
-                  }
-                  className="img-fluid"
-                  alt="product-image"
-                  srcSet=""
-                />
-                <img
-                  src={
-                    item?.images[1]?.url
-                      ? item.images[1].url
-                      : "images/watch.jpg"
-                  }
-                  className="img-fluid"
-                  alt="product-image"
-                  srcSet=""
-                />
-              </div>
+              <Link to={`/product/` + item?._id}>
+                <div className="product-image">
+                  <img
+                    src={
+                      item?.images[0]?.url
+                        ? item.images[0].url
+                        : "images/watch.jpg"
+                    }
+                    className="img-fluid"
+                    alt="product-image"
+                    srcSet=""
+                  />
+                  <img
+                    src={
+                      item?.images[1]?.url
+                        ? item.images[1].url
+                        : "images/watch.jpg"
+                    }
+                    className="img-fluid"
+                    alt="product-image"
+                    srcSet=""
+                  />
+                </div>
 
-              <div className="product-details">
-                <h6 className="brand">{item?.brand}</h6>
-                <h5 className="product-title">
-                  {grid != 1
-                    ? item?.title.substring(0, 30) + " ..."
-                    : item?.title}
-                </h5>
-                <ReactStars
-                  edit={false}
-                  count={5}
-                  value={parseFloat(item?.totalrating)}
-                  size={24}
-                  isHalf={true}
-                  emptyIcon={<i className="far fa-star"></i>}
-                  halfIcon={<i className="fa fa-star-half-alt"></i>}
-                  fullIcon={<i className="fa fa-star"></i>}
-                  activeColor="#ffd700"
-                />
-                <p
-                  className={`description ${grid === 1 ? "d-block" : "d-none"}`}
-                  dangerouslySetInnerHTML={{
-                    __html: item?.description.substring(0, 200) + " ...",
-                  }}
-                ></p>
-                <p className="price">Rs. {item?.price}</p>
-              </div>
+                <div className="product-details">
+                  <h6 className="brand">{item?.brand}</h6>
+                  <h5 className="product-title">
+                    {grid != 1
+                      ? `${
+                          item?.title.length > 30
+                            ? item?.title.substring(0, 30) + " ..."
+                            : item?.title.substring(0, 30)
+                        }`
+                      : `${
+                          item?.title.length > 75
+                            ? item?.title.substring(0, 75) + " ..."
+                            : item?.title.substring(0, 75)
+                        }`}
+                  </h5>
+                  <ReactStars
+                    edit={false}
+                    count={5}
+                    value={parseFloat(item?.totalrating)}
+                    size={24}
+                    isHalf={true}
+                    emptyIcon={<i className="far fa-star"></i>}
+                    halfIcon={<i className="fa fa-star-half-alt"></i>}
+                    fullIcon={<i className="fa fa-star"></i>}
+                    activeColor="#ffd700"
+                  />
+                  <p
+                    className={`description ${
+                      grid === 1 ? "d-block" : "d-none"
+                    }`}
+                    dangerouslySetInnerHTML={{
+                      __html: `${
+                        item?.description.length > 200
+                          ? item?.description.substring(0, 200) + " ..."
+                          : item?.description.substring(0, 200)
+                      }`,
+                    }}
+                  ></p>
+                  <p className="price">Rs. {item?.price}</p>
+                </div>
+              </Link>
 
               <div className="wishlist-icon position-absolute">
                 <button

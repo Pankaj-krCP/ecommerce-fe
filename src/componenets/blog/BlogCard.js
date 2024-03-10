@@ -14,7 +14,9 @@ function BlogCard(props) {
       </div>
       <div className="blog-content">
         <p className="date">{date}</p>
-        <h5 className="title">{title}</h5>
+        <h5 className="title">
+          {title?.slice(0, 40) + `${title?.length > 40 ? " ..." : ""}`}
+        </h5>
         <p
           className="desc"
           dangerouslySetInnerHTML={{
