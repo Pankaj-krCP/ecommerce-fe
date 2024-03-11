@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "../productcard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../features/products/productSlice";
 
@@ -20,7 +20,10 @@ const ProductListDisplay = ({ grid }) => {
     <>
       <div className="product-list pb-5">
         <div className="d-flex gap-10 flex-wrap">
-          <ProductCard data={productState ? productState : []} grid={grid} />
+          {productState &&
+            productState.map((item) => (
+              <ProductCard key={item?._id} item={item} grid={grid} />
+            ))}
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "../common/Container";
-import ProductCard from "../ourstore/ProductCard";
+import ProductCard from "../productcard/ProductCard";
 import { getAllProducts } from "../../features/products/productSlice";
 
 const PopularWrapper = () => {
@@ -11,7 +11,7 @@ const PopularWrapper = () => {
   }, []);
   const productState = useSelector((state) => state?.product?.product);
   const popularProduct = productState
-    ? productState.filter((item) => item.tags === "Popular")
+    ? productState.filter((item) => item.tags === "Popular").slice(0, 4)
     : [];
 
   return (
@@ -20,7 +20,10 @@ const PopularWrapper = () => {
         <div className="col-12">
           <h3 className="section-heading">Our Popular Products</h3>
         </div>
-        <ProductCard data={popularProduct.slice(0, 4)} />
+        {popularProduct &&
+          popularProduct.map((item) => (
+            <ProductCard key={item?._id} item={item} />
+          ))}
       </div>
     </Container>
   );

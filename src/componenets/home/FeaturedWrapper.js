@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Container from "../common/Container";
-import ProductCard from "../ourstore/ProductCard";
+import ProductCard from "../productcard/ProductCard";
 
 const FeaturedWrapper = () => {
   const productState = useSelector((state) => state?.product?.product);
   const featuredProduct = productState
-    ? productState.filter((item) => item.tags === "Featured")
+    ? productState.filter((item) => item.tags === "Featured").slice(0, 4)
     : [];
 
   return (
@@ -15,7 +15,10 @@ const FeaturedWrapper = () => {
         <div className="col-12">
           <h3 className="section-heading">Featured Collection</h3>
         </div>
-        <ProductCard data={featuredProduct.slice(0, 4)} />
+        {featuredProduct &&
+          featuredProduct.map((item) => (
+            <ProductCard key={item?._id} item={item} />
+          ))}
       </div>
     </Container>
   );

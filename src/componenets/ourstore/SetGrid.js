@@ -1,9 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const SetGrid = ({ setGrid }) => {
+  const total = useSelector((state) => state?.product?.product?.length);
+
   return (
     <div className="d-flex align-items-center gap-10">
-      <p className="totalproducts mb-0">21 Product</p>
+      <p className="totalproducts mb-0">{total} Product</p>
       <div className="d-flex gap-10 align-items-center grid">
         <img
           onClick={() => {
