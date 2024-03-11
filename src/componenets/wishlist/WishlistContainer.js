@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import Container from "../common/Container";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Container from "../common/Container";
 import { addToWishlist } from "../../features/products/productSlice";
 import { getUserProductWishlist } from "../../features/user/userSlice";
 
@@ -35,15 +36,17 @@ const WishlistContainer = () => {
               <div className="col-3" key={index}>
                 <div className="wishlist-card position-relative">
                   <div className="wishlist-card-image bg-white">
-                    <img
-                      src={
-                        item?.images[0]?.url
-                          ? item?.images[0].url
-                          : "images/watch.jpg"
-                      }
-                      alt="watch"
-                      className="img-fluid w-100 d-block mx-auto"
-                    />
+                    <Link to={`/product/${item?._id}`}>
+                      <img
+                        src={
+                          item?.images[0]?.url
+                            ? item?.images[0].url
+                            : "images/watch.jpg"
+                        }
+                        alt="watch"
+                        className="img-fluid w-100 d-block mx-auto"
+                      />
+                    </Link>
                   </div>
                   <img
                     src="images/cross.svg"

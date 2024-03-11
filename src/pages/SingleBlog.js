@@ -8,14 +8,15 @@ import { getABlog } from "../features/blogs/blogSlice";
 import GoBack from "../componenets/common/GoBack";
 
 const SingleBlog = () => {
-  const blogState = useSelector((state) => state?.blog?.singleBlog);
   const location = useLocation();
-  const getBlogId = location.pathname.split("/")[2];
   const dispatch = useDispatch();
+  const getBlogId = location.pathname.split("/")[2];
+  const blogState = useSelector((state) => state?.blog?.singleBlog);
 
   useEffect(() => {
     dispatch(getABlog(getBlogId));
   }, []);
+
   return (
     <>
       <Meta title={blogState?.title} />

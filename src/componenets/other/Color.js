@@ -1,13 +1,13 @@
-import react from "react";
-
-function Color() {
+function Color({ color }) {
   return (
     <>
       <ul className="colors ps-0">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        {color?.map((item, index) => (
+          <li
+            key={index}
+            style={{ backgroundColor: item, border: "1px solid" }}
+          ></li>
+        ))}
       </ul>
     </>
   );
