@@ -7,6 +7,7 @@ import bcategoryReducer from "../features/bcategory/bcategorySlice";
 import productFilterReducer from "../features/filter/productFilterSlice";
 import blogFilterReducer from "../features/filter/blogFilterSlice";
 import blogReducer from "../features/blogs/blogSlice";
+import contactReducer from "../features/contact/contactSlice";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     productFilter: productFilterReducer,
     blogFilter: blogFilterReducer,
     blog: blogReducer,
+    contact: contactReducer,
   },
 });

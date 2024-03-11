@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { tags } from "../../utils/constant";
+import { tags } from "../../utils/Data";
 import { setTagFilter } from "../../features/filter/productFilterSlice";
 import { useDispatch, useSelector } from "react-redux";
 
