@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { addToWishlist } from "../../features/products/productSlice";
@@ -6,11 +6,21 @@ import { getUserProductWishlist } from "../../features/user/userSlice";
 
 const ProductCardWishIcon = (props) => {
   const { id } = props;
+  const [wish, setWish] = useState(0);
   const dispatch = useDispatch();
 
   const addToWishResult = useSelector((state) => state?.product);
-  const wishlistState = useSelector((state) => state?.auth?.wishlist?.wishlist);
-  const wishlistID = wishlistState?.map((item) => item._id);
+  const wishlistID = useSelector(
+    (state) => state?.auth?.wishlist?.wishlist
+  )?.map((item) => item._id);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (wishlistID?.includes(id)) {
+        setWish(1);
+      }
+    }, 100);
+  }, []);
 
   useEffect(() => {
     dispatch(getUserProductWishlist());
@@ -18,6 +28,7 @@ const ProductCardWishIcon = (props) => {
 
   const addToWish = (prodId) => {
     dispatch(addToWishlist(prodId));
+    setWish(!wish);
   };
 
   return (
@@ -28,7 +39,7 @@ const ProductCardWishIcon = (props) => {
           addToWish(id);
         }}
       >
-        {wishlistID?.includes(id) ? (
+        {wish ? (
           <FaHeart className="fs-5 text-danger" />
         ) : (
           <FaRegHeart className="fs-5" />
