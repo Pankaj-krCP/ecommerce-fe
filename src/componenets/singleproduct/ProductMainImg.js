@@ -1,10 +1,14 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import ReactImageZoom from "react-image-zoom";
 import { MdOutlineImageSearch } from "react-icons/md";
 import Zoom from "react-medium-image-zoom";
 import "react-medium-image-zoom/dist/styles.css";
 
-const ProductMainImg = ({ images }) => {
+const ProductMainImg = () => {
+  const productState = useSelector((state) => state?.product?.singleProduct);
+  const images = productState?.images || [];
+
   const props = {
     width: 400,
     height: 400,

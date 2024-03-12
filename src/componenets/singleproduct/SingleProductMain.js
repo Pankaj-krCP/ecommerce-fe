@@ -3,16 +3,15 @@ import Container from "../common/Container";
 import ProductMainImg from "./ProductMainImg";
 import ProductMainDetails from "./ProductMainDetails";
 
-const SingleProductMain = (props) => {
-  const { images, details } = props;
+const SingleProductMain = () => {
   return (
     <Container class1="main-product-wrapper py-5 home-wrapper-2">
       <div className="row">
         <div className="col-6">
-          <ProductMainImg images={images || []} />
+          <ProductMainImg />
         </div>
         <div className="col-6">
-          <ProductMainDetails details={details} />
+          <ProductMainDetails />
         </div>
       </div>
     </Container>

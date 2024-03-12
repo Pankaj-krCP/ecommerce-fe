@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import Container from "../common/Container";
 
-const SingleProductDescription = ({ description }) => {
+const SingleProductDescription = () => {
+  const productState = useSelector((state) => state?.product?.singleProduct);
+  const description = productState?.description;
   return (
     <Container class1="description-wrapper py-5 home-wrapper-2">
       <div className="row">

@@ -23,7 +23,7 @@ const SingleProduct = () => {
       <Meta title={productState?.title} />
       <BreadCrumb title={productState?.title} />
       <GoBack />
-      <SingleProductContainer product={productState} />
+      <SingleProductContainer />
     </>
   );
 };
