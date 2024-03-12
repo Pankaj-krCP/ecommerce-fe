@@ -16,6 +16,7 @@ import DetailsProductLink from "./DetailsProductLink";
 const ProductMainDetails = () => {
   const productState = useSelector((state) => state?.product?.singleProduct);
   const details = {
+    id: productState?._id || "",
     title: productState?.title || "title",
     price: productState?.price || "price",
     rating: parseFloat(productState?.totalrating) || 0,

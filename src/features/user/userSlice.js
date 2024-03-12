@@ -239,6 +239,9 @@ export const authSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.message = action.error;
+        if (state.isError) {
+          toast.error("Something Went Wrong");
+        }
       })
       .addCase(getUserCart.pending, (state) => {
         state.isLoading = true;

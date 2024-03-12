@@ -2,108 +2,108 @@ import axios from "axios";
 import { base_url, config } from "../../utils/axiosConfig";
 
 const register = async (userData) => {
-  const responce = await axios.post(`${base_url}user/register`, userData);
-  return responce.data;
+  const response = await axios.post(`${base_url}user/register`, userData);
+  return response.data;
 };
 
 const login = async (userData) => {
-  const responce = await axios.post(`${base_url}user/login`, userData);
-  if (responce.data) {
-    localStorage.setItem("customer", JSON.stringify(responce.data));
-    return responce.data;
+  const response = await axios.post(`${base_url}user/login`, userData);
+  if (response.data) {
+    localStorage.setItem("customer", JSON.stringify(response.data));
+    return response.data;
   }
 };
 
 const getUserWishlist = async () => {
-  const responce = await axios.get(`${base_url}user/wishlist`, config);
-  if (responce.data) {
-    return responce.data;
+  const response = await axios.get(`${base_url}user/wishlist`, config);
+  if (response.data) {
+    return response.data;
   }
 };
 
-const addToCart = async (cartData) => {
-  const responce = await axios.post(`${base_url}user/cart`, cartData, config);
-  if (responce.data) {
-    return responce.data;
+const addToCart = async (cart) => {
+  const response = await axios.post(`${base_url}user/cart`, cart, config);
+  if (response.data) {
+    return response.data;
   }
 };
 
 const getCart = async () => {
-  const responce = await axios.get(`${base_url}user/cart`, config);
-  if (responce.data) {
-    return responce.data;
+  const response = await axios.get(`${base_url}user/cart`, config);
+  if (response.data) {
+    return response.data;
   }
 };
 
 const removeProductFromCart = async (cartItemId) => {
-  const responce = await axios.delete(
+  const response = await axios.delete(
     `${base_url}user/delete-product-cart/${cartItemId}`,
     config
   );
-  if (responce.data) {
-    return responce.data;
+  if (response.data) {
+    return response.data;
   }
 };
 
 const updateProductFromCart = async (cartDetail) => {
-  const responce = await axios.delete(
+  const response = await axios.delete(
     `${base_url}user/update-product-cart/${cartDetail.cartItemId}/${cartDetail.quantity}`,
     config
   );
-  if (responce.data) {
-    return responce.data;
+  if (response.data) {
+    return response.data;
   }
 };
 
 const createOrder = async (orderDetail) => {
-  const responce = await axios.post(
+  const response = await axios.post(
     `${base_url}user/cart/create-order`,
     orderDetail,
     config
   );
-  if (responce.data) {
-    return responce.data;
+  if (response.data) {
+    return response.data;
   }
 };
 
 const getUserOrders = async () => {
-  const responce = await axios.get(`${base_url}user/getmyorders`, config);
-  if (responce.data) {
-    return responce.data;
+  const response = await axios.get(`${base_url}user/getmyorders`, config);
+  if (response.data) {
+    return response.data;
   }
 };
 
 const updateUser = async (data) => {
-  const responce = await axios.put(`${base_url}user/edit-user`, data, config);
-  if (responce.data) {
-    return responce.data;
+  const response = await axios.put(`${base_url}user/edit-user`, data, config);
+  if (response.data) {
+    return response.data;
   }
 };
 
 const forgotPassToken = async (data) => {
-  const responce = await axios.post(
+  const response = await axios.post(
     `${base_url}user/forgot-password-token`,
     data
   );
-  if (responce.data) {
-    return responce.data;
+  if (response.data) {
+    return response.data;
   }
 };
 
 const resetPass = async (data) => {
-  const responce = await axios.put(
+  const response = await axios.put(
     `${base_url}user/reset-password/${data.token}`,
     { password: data?.password }
   );
-  if (responce.data) {
-    return responce.data;
+  if (response.data) {
+    return response.data;
   }
 };
 
 const emptyCart = async () => {
-  const responce = await axios.delete(`${base_url}user/empty-cart`, config);
-  if (responce.data) {
-    return responce.data;
+  const response = await axios.delete(`${base_url}user/empty-cart`, config);
+  if (response.data) {
+    return response.data;
   }
 };
 
