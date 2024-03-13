@@ -8,6 +8,12 @@ import { resetState } from "../../features/temp/selectedProductSlice";
 const AddToCart = ({ details }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const userCartProduct = useSelector(
+    (state) => state?.auth?.cartProducts?.products
+  );
+  const cartProductIDS = userCartProduct?.map((item) => item?.product?._id);
+
   const selectedProduct = useSelector((store) => store?.selectedProduct);
   const uploadCart = () => {
     if (selectedProduct?.selectedColor === "") {
@@ -28,14 +34,27 @@ const AddToCart = ({ details }) => {
     }
   };
   return (
-    <button
-      className="button border-0"
-      onClick={() => {
-        uploadCart();
-      }}
-    >
-      Add to Cart
-    </button>
+    <>
+      {cartProductIDS?.includes(details?.id) ? (
+        <button
+          className="button border-0"
+          onClick={() => {
+            navigate("/cart");
+          }}
+        >
+          Go to Cart
+        </button>
+      ) : (
+        <button
+          className="button border-0"
+          onClick={() => {
+            uploadCart();
+          }}
+        >
+          Add to Cart
+        </button>
+      )}
+    </>
   );
 };
 

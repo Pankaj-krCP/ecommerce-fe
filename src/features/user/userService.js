@@ -46,8 +46,9 @@ const removeProductFromCart = async (cartItemId) => {
 };
 
 const updateProductFromCart = async (cartDetail) => {
-  const response = await axios.delete(
-    `${base_url}user/update-product-cart/${cartDetail.cartItemId}/${cartDetail.quantity}`,
+  const response = await axios.put(
+    `${base_url}user/update-product-cart/${cartDetail?.cartItemID}`,
+    cartDetail,
     config
   );
   if (response.data) {

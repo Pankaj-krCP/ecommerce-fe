@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoIosGitCompare } from "react-icons/io";
 import { CiHeart, CiUser, CiShoppingCart } from "react-icons/ci";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserCart } from "../../features/user/userSlice";
 
 const HeaderUpeerLink = () => {
+  const dispatch = useDispatch();
+  const userCartState = useSelector((state) => state?.auth);
+  useEffect(() => {
+    dispatch(getUserCart());
+  }, [
+    userCartState?.cartProduct,
+    userCartState?.deletedCartProduct,
+    userCartState?.updatedCartProduct,
+  ]);
   return (
     <div className="header-upper-links d-flex align-items-center justify-content-between">
       <div>
@@ -46,8 +57,12 @@ const HeaderUpeerLink = () => {
         >
           <CiShoppingCart className="fs-1 text-success" />
           <div className="d-flex flex-column">
-            <span className="badge bg-white text-dark">0</span>
-            <p className="mb-0">Rs. 500</p>
+            <span className="badge bg-white text-dark">
+              {userCartState?.cartProducts?.products?.length || 0}
+            </span>
+            <p className="mb-0">
+              Rs. {userCartState?.cartProducts?.cartTotal || 0}
+            </p>
           </div>
         </Link>
       </div>
