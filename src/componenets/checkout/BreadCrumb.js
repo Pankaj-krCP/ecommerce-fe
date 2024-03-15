@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BreadCrumb = () => {
+const BreadCrumb = ({ success }) => {
   return (
     <div>
-      <h3 className="website-name">E Digit</h3>
       <nav style={{ "--bs-breadcrumb-divider": "" }} aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -14,14 +13,17 @@ const BreadCrumb = () => {
           </li>
 
           <li
-            className="breadcrumb-item total-price text-success"
+            className={`breadcrumb-item total-price ${
+              success === "shipping" ? "text-success active" : "active"
+            }`}
             aria-current="page"
           >
-            Information
+            Shipping
           </li>
-          <li className="breadcrumb-item total-price active">Shipping</li>
           <li
-            className="breadcrumb-item total-price active"
+            className={`breadcrumb-item total-price ${
+              success === "payment" ? "text-success active" : "active"
+            }`}
             aria-current="page"
           >
             Payment

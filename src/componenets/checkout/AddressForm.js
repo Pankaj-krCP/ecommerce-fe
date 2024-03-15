@@ -3,10 +3,13 @@ import { BiArrowBack } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import AddressSelectCountry from "./AddressSelectCountry";
 import RequiredInput from "../other/RequiredInput";
+import BreadCrumb from "./BreadCrumb";
 
 const AddressForm = ({ formik }) => {
   return (
     <>
+      <BreadCrumb success="shipping" />
+      <h4 className="mb-3">Shipping Address</h4>
       <form
         onSubmit={formik.handleSubmit}
         action=""
@@ -40,11 +43,8 @@ const AddressForm = ({ formik }) => {
             <Link to="/cart" className="text-dark">
               <BiArrowBack /> Return to Cart
             </Link>
-            {/* <Link to="" className="button">
-              Continue to Shipping
-            </Link> */}
             <button className="button border" type="submit">
-              Place Order
+              Continue to Payment
             </button>
           </div>
         </div>

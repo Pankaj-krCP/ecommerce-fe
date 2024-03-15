@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import shippingSchema from "../../utils/schema/shippingSchema";
 import AddressForm from "./AddressForm";
+import PaymentProcess from "./PaymentProcess";
 
 const ShippingAddress = () => {
-  const checkOutHandler = async () => {
-    console.log("Processing");
-  };
+  const [shippingInfo, setShippingInfo] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -21,16 +20,20 @@ const ShippingAddress = () => {
     },
     validationSchema: shippingSchema,
     onSubmit: async (values) => {
-      localStorage.setItem("address", JSON.stringify(values));
-      setTimeout(() => {
-        checkOutHandler();
-      }, 300);
+      setShippingInfo(values);
     },
   });
+
   return (
     <div>
-      <h4 className="mb-3">Shipping Address</h4>
-      <AddressForm formik={formik} />
+      {!shippingInfo ? (
+        <AddressForm formik={formik} />
+      ) : (
+        <PaymentProcess
+          shippingInfo={shippingInfo}
+          setShippingInfo={setShippingInfo}
+        />
+      )}
     </div>
   );
 };
