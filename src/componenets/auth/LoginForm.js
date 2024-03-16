@@ -30,8 +30,10 @@ const LoginForm = () => {
         <RequiredInput formik={formik} type={"email"} name={"email"} />
         <RequiredInput formik={formik} type={"password"} name={"password"} />
         <div>
-          <Link to="/forgot-password">Forgot Password</Link>
-          <div className="mt-3 d-flex justify-content-center gap-15  align-items-center">
+          <Link to="/forgot-password" style={{ paddingLeft: "12px" }}>
+            Forgot Password
+          </Link>
+          <div className="mt-3 d-flex justify-content-center gap-30  align-items-center">
             <button className="button border-0" type="submit">
               Login
             </button>

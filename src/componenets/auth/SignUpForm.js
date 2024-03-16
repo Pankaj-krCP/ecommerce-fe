@@ -1,6 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import signUpSchema from "../../utils/schema/signUpSchema";
 import { registerUser } from "../../features/user/userSlice";
 import RequiredInput from "../other/RequiredInput";
@@ -34,7 +35,10 @@ const SignUpForm = () => {
         <RequiredInput formik={formik} type={"tel"} name={"mobile"} />
         <RequiredInput formik={formik} type={"password"} name={"password"} />
         <div>
-          <div className="mt-3 d-flex justify-content-center gap-15  align-items-center">
+          <div className="mt-3 d-flex justify-content-center gap-30  align-items-center">
+            <Link className="button signup" to="/login">
+              Login
+            </Link>
             <button className="button border-0" type="submit">
               Sign Up
             </button>
