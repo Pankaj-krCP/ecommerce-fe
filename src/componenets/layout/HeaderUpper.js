@@ -1,7 +1,7 @@
 import React from "react";
 import HeaderUpperLogo from "./HeaderUpperLogo";
 import HeaderUpperSearchBar from "./HeaderUpperSearchBar";
-import HeaderUpeerLink from "./HeaderUpeerLink";
+import HeaderUpperLink from "./HeaderUpperLink";
 
 const HeaderUpper = () => {
   return (
@@ -14,7 +14,7 @@ const HeaderUpper = () => {
           <HeaderUpperSearchBar />
         </div>
         <div className="col-5">
-          <HeaderUpeerLink />
+          <HeaderUpperLink />
         </div>
       </div>
     </header>

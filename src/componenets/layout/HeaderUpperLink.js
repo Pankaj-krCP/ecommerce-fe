@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
 import { IoIosGitCompare } from "react-icons/io";
-import { CiHeart, CiUser, CiShoppingCart } from "react-icons/ci";
+import { CiHeart, CiShoppingCart } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserCart } from "../../features/user/userSlice";
+import HeaderUpperUserProfile from "./HeaderUpperUserProfile";
 
-const HeaderUpeerLink = () => {
+const HeaderUpperLink = () => {
   const dispatch = useDispatch();
-  const userCartState = useSelector((state) => state?.auth);
+  const userState = useSelector((state) => state?.auth);
   useEffect(() => {
     dispatch(getUserCart());
   }, [
-    userCartState?.cartProduct,
-    userCartState?.deletedCartProduct,
-    userCartState?.updatedCartProduct,
+    userState?.cartProduct,
+    userState?.deletedCartProduct,
+    userState?.updatedCartProduct,
   ]);
+
   return (
     <div className="header-upper-links d-flex align-items-center justify-content-between">
       <div>
@@ -39,29 +41,19 @@ const HeaderUpeerLink = () => {
           </p>
         </Link>
       </div>
-      <div>
-        <Link
-          to="/login"
-          className="d-flex align-items-center gap-10 text-white"
-        >
-          <CiUser className="fs-2" />
-          <p className="mb-0">
-            Log in <br /> My Account
-          </p>
-        </Link>
-      </div>
+      <HeaderUpperUserProfile />
       <div>
         <Link
           to="/cart"
           className="d-flex align-items-center gap-10 text-white"
         >
-          <CiShoppingCart className="fs-1 text-success" />
+          <CiShoppingCart className="fs-1" />
           <div className="d-flex flex-column">
             <span className="badge bg-white text-dark">
-              {userCartState?.cartProducts?.products?.length || 0}
+              {userState?.cartProducts?.products?.length || 0}
             </span>
             <p className="mb-0">
-              Rs. {userCartState?.cartProducts?.cartTotal || 0}
+              Rs. {userState?.cartProducts?.cartTotal || 0}
             </p>
           </div>
         </Link>
@@ -70,4 +62,4 @@ const HeaderUpeerLink = () => {
   );
 };
 
-export default HeaderUpeerLink;
+export default HeaderUpperLink;

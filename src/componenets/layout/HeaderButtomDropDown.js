@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const HeaderButtomDropDown = () => {
   return (
-    <div className="dropdown">
+    <div className="dropdown border rounded">
       <button
         className="btn btn-secondary dropdown-toggle bg-transparent border-0 gap-15 me-5 d-flex align-items-center"
         type="button"
