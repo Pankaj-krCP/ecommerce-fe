@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { addToWishlist } from "../../features/products/productSlice";
 import { getUserProductWishlist } from "../../features/user/userSlice";
@@ -8,7 +9,9 @@ const ProductCardWishIcon = (props) => {
   const { id } = props;
   const [wish, setWish] = useState(0);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
+  const auth = useSelector((state) => state?.auth);
   const addToWishResult = useSelector((state) => state?.product);
   const wishlistID = useSelector(
     (state) => state?.auth?.wishlist?.wishlist
@@ -27,8 +30,12 @@ const ProductCardWishIcon = (props) => {
   }, [addToWishResult.addToWishlist]);
 
   const addToWish = (prodId) => {
-    dispatch(addToWishlist(prodId));
-    setWish(!wish);
+    if (!auth?.user) {
+      navigate("/login");
+    } else {
+      dispatch(addToWishlist(prodId));
+      setWish(!wish);
+    }
   };
 
   return (

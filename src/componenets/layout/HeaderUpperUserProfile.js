@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const HeaderUpperUserProfile = () => {
+  const navigate = useNavigate();
   const [openDropDown, setOpenDropDown] = useState(false);
   const userState = useSelector((state) => state?.auth);
+
   const dropdownHandler = () => {
     setOpenDropDown(!openDropDown);
+  };
+
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate("/login");
+    window.location.reload();
   };
 
   return (
@@ -44,11 +52,16 @@ const HeaderUpperUserProfile = () => {
 
       {openDropDown && (
         <div
-          className="w-100 top-100 m-1 border rounded position-absolute"
+          className="w-100 top-100 m-2 border rounded position-absolute"
           style={{ backgroundColor: "#131921" }}
         >
-          <Link className="w-100 p-2 text-white">Log Out</Link>
-          <Link className="w-100 p-2 text-white">View Profile</Link>
+          <button
+            onClick={handleLogout}
+            className="w-100 p-2 bg-transparent border-0 border-bottom text-white"
+          >
+            Log Out
+          </button>
+          <Link className="w-100 p-2 text-white text-center">View Profile</Link>
         </div>
       )}
     </div>
