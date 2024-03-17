@@ -17,6 +17,9 @@ const HeaderButtomMenuLink = () => {
         <NavLink className="text-white" to="/contact">
           Contact
         </NavLink>
+        <NavLink className="text-white" to="/my-orders">
+          Orders
+        </NavLink>
       </div>
     </div>
   );

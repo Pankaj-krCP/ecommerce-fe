@@ -3,7 +3,6 @@ import { base_url } from "../../utils/axiosConfig";
 
 const postQuery = async (contactData) => {
   const response = await axios.post(`${base_url}enquiry`, contactData);
-  console.log(contactData);
   if (response.data) {
     return response.data;
   }

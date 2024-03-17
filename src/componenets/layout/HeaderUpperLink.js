@@ -15,6 +15,7 @@ const HeaderUpperLink = () => {
     userState?.cartProduct,
     userState?.deletedCartProduct,
     userState?.updatedCartProduct,
+    userState?.deletedCart,
   ]);
 
   return (

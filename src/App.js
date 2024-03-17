@@ -21,6 +21,7 @@ import TermAndConditions from "./pages/TermAndConditions";
 import SingleProduct from "./pages/SingleProduct";
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
+import Orders from "./pages/Orders";
 import { PrivateRoute } from "./routing/PrivateRoute";
 import { OpenRoute } from "./routing/OpenRoute";
 
@@ -75,6 +76,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <Checkout />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="my-orders"
+              element={
+                <PrivateRoute>
+                  <Orders />
                 </PrivateRoute>
               }
             />

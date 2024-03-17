@@ -4,12 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { BiArrowBack } from "react-icons/bi";
 import BreadCrumb from "./BreadCrumb";
 import { base_url, config } from "../../utils/axiosConfig";
-import { createAnOrder } from "../../features/user/userSlice";
+import { createAnOrder, deleteUserCart } from "../../features/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const PaymentProcess = (props) => {
   const { shippingInfo, setShippingInfo } = props;
   const [orderItems, setOrderItems] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const userCartState = useSelector((state) => state?.auth?.cartProducts);
   const user = useSelector((state) => state?.auth?.user);
 
@@ -114,7 +116,8 @@ const PaymentProcess = (props) => {
         shippingInfo: shippingInfo,
       })
     );
-    // dispatch(deleteUserCart());
+    dispatch(deleteUserCart());
+    navigate("/my-orders");
   };
 
   return (
