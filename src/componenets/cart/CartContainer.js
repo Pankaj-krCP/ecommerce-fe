@@ -7,10 +7,10 @@ import CartCheckout from "./CartCheckout";
 import EmptyCart from "./EmptyCart";
 
 const CartContainer = () => {
-  const userCartState = useSelector((state) => state?.auth);
+  const cartProducts = useSelector((state) => state?.auth?.cartProducts);
   return (
     <Container class1="cart-wrapper home-wrapper-2 py-5">
-      {!userCartState?.cartProducts ? (
+      {!cartProducts ? (
         <EmptyCart />
       ) : (
         <>

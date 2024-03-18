@@ -1,7 +1,7 @@
 import React from "react";
 import CustomInput from "./CustomInput";
 
-const RequiredInput = ({ formik, type, name }) => {
+const RequiredInput = ({ formik, type, name, disabled }) => {
   return (
     <>
       <CustomInput

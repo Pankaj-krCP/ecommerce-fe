@@ -24,6 +24,7 @@ import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
 import { PrivateRoute } from "./routing/PrivateRoute";
 import { OpenRoute } from "./routing/OpenRoute";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -87,7 +88,14 @@ function App() {
                 </PrivateRoute>
               }
             />
-
+            <Route
+              path="my-profile"
+              element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
             <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="refund-policy" element={<RefundPolicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />
