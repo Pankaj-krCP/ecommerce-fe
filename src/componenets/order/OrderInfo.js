@@ -1,15 +1,10 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import OrderItemInfo from "./OrderItemInfo";
-import { getOrders } from "../../features/user/userSlice";
 
 const OrderInfo = () => {
-  const dispatch = useDispatch();
   const orderState = useSelector((state) => state?.auth?.getorderedProduct);
-  const orderedProduct = useSelector((state) => state?.auth?.orderedProduct);
-  useEffect(() => {
-    dispatch(getOrders());
-  }, [orderedProduct]);
+
   return (
     <div>
       <div className="row">
