@@ -15,7 +15,7 @@ const OrderContainer = () => {
   }, [orderedProduct]);
   return (
     <Container class1="cart-wrapper home-wrapper-2 p-5">
-      {orderState ? (
+      {orderState.length ? (
         <>
           <TitleHeader />
           <OrderInfo />

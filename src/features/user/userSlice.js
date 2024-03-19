@@ -364,7 +364,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.token = action.payload;
+        state.mailSent = action.payload;
         if (state.isSuccess) {
           toast.success("Forgot Password Email Sent Successfully!");
         }
@@ -374,8 +374,13 @@ export const authSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.message = action.error;
-        if (state.isError) {
-          toast.error("Something Went Wrong!");
+        if (
+          state.isError &&
+          action.payload.response.data.message === "User Not Found"
+        ) {
+          toast.error(action.payload.response.data.message);
+        } else {
+          toast.error(`Something Went Wrong!`);
         }
       })
       .addCase(resetPassword.pending, (state) => {
@@ -385,7 +390,7 @@ export const authSlice = createSlice({
         state.isLoading = false;
         state.isError = false;
         state.isSuccess = true;
-        state.pass = action.payload;
+        state.resetPassword = action.payload;
         if (state.isSuccess) {
           toast.success("Password Updated Successfully!");
         }
@@ -395,8 +400,13 @@ export const authSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.message = action.error;
-        if (state.isError) {
-          toast.error("Something Went Wrong!");
+        if (
+          state.isError &&
+          action.payload.response.data.message === "Token Expired"
+        ) {
+          toast.error("Token Expired, Please try again");
+        } else {
+          toast.error(`Something Went Wrong!`);
         }
       })
       .addCase(deleteUserCart.pending, (state) => {
