@@ -1,7 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { CgMenuGridR } from "react-icons/cg";
+import { getAllCategories } from "../../features/pcategory/pcategorySlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategoryFilter } from "../../features/filter/productFilterSlice";
 
 const HeaderButtomDropDown = () => {
+  const [category, setCategory] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  const catState = useSelector((store) => store?.pcategory?.category);
+
+  useEffect(() => {
+    dispatch(getAllCategories());
+  }, []);
+
+  useEffect(() => {
+    if (category) {
+      if (path != "store") {
+        navigate("/store");
+        setTimeout(() => {
+          dispatch(setCategoryFilter(category));
+        }, 100);
+      } else {
+        dispatch(setCategoryFilter(category));
+      }
+    }
+  }, [category]);
+
+  const onClickHandler = (cat) => {
+    setCategory(cat);
+  };
+
   return (
     <div className="dropdown border rounded">
       <button
@@ -11,28 +43,26 @@ const HeaderButtomDropDown = () => {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        <img src="images/menu.svg" alt=""></img>
-        <span className="me-5 d-inline-block">Shop Categories</span>
+        <CgMenuGridR className="fs-2" />
+        <span className="me-4 d-inline-block">Shop Categories</span>
       </button>
-      <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li>
-          <Link className="dropdown-item text-white" to="">
-            Action
-          </Link>
-          Another
-        </li>
-        <li>
-          <Link className="dropdown-item text-white" to="">
-            Another action
-          </Link>
-          Another
-        </li>
-        <li>
-          <Link className="dropdown-item text-white" to="">
-            Something else here
-          </Link>
-          Another
-        </li>
+      <ul
+        className="dropdown-menu border border-bottom-0 mt-1 py-0"
+        aria-labelledby="dropdownMenuButton1"
+      >
+        {catState &&
+          catState?.map((item, index) => {
+            return (
+              <li key={index}>
+                <button
+                  onClick={() => onClickHandler(item?.title)}
+                  className="profile-item w-100 p-3 bg-transparent border-0 rounded border-bottom text-white text-start"
+                >
+                  {item?.title}
+                </button>
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

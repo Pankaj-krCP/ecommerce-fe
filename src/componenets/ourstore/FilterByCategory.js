@@ -8,10 +8,6 @@ const FilterByCategory = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllCategories());
-  }, []);
-
-  useEffect(() => {
     dispatch(setCategoryFilter(category));
   }, [category]);
 
