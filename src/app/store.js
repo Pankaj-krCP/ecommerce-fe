@@ -25,4 +25,5 @@ export const store = configureStore({
     selectedProduct: selectedProductReducer,
     searchBar: searchBarReducer,
   },
+  devTools: process.env.NODE_ENV !== "production",
 });
