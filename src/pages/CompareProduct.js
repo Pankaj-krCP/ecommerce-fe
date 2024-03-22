@@ -11,6 +11,9 @@ function CompareProduct() {
       <BreadCrumb title="compare product" />
       <Container class1="compare-product-wrapper py-5 home-wrapper-2">
         <div className="row">
+          <h5 className="text-center text-danger mb-5">
+            This Page is under progress Data is not Dynamic yet
+          </h5>
           <div className="col-3">
             <div className="compare-product-card position-relative">
               <img

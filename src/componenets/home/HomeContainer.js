@@ -23,9 +23,9 @@ const HomeContainer = () => {
     <>
       <MainBannerWrapper />
       <ServicesWrapper />
-      <CategoriesWrapper />
+      {/* <CategoriesWrapper /> */}
       <FeaturedWrapper />
-      <FamousWrapper />
+      {/* <FamousWrapper /> */}
       <SpecialWrapper />
       <PopularWrapper />
       <MarqueWrapper />
