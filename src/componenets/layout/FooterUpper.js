@@ -6,9 +6,9 @@ const FooterUpper = () => {
     <footer className="py-4">
       <div className="container-xxl">
         <div className="row">
-          <h5 className="text-center text-danger mb-5">
+          {/* <h5 className="text-center text-danger mb-5">
             Footer Integration is in Progress
-          </h5>
+          </h5> */}
           <div className="col-5">
             <div className="footer-top-data d-flex gap-30 align-items-center">
               <BsSend className="fs-4 text-white" />
